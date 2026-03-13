@@ -3,12 +3,22 @@ import java.util.Scanner;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String original = sc.nextLine();
-        String reversed = "";
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);
+        String input = sc.nextLine();
+        char[] arr = input.toCharArray();
+        int left = 0;
+        int right = arr.length - 1;
+        boolean palindrome = true;
+
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                palindrome = false;
+                break;
+            }
+            left++;
+            right--;
         }
-        if (original.equals(reversed)) {
+
+        if (palindrome) {
             System.out.println("Palindrome");
         } else {
             System.out.println("Not Palindrome");
